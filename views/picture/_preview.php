@@ -1,5 +1,5 @@
 <div class="file-preview-frame" id="preview-1426305300270-0" data-fileindex="0">
-	<?php echo \yii\helpers\Html::a($model->img('preview'), $model->url('full'), [
+	<?php echo \yii\helpers\Html::a(\yii\helpers\Html::img($model->url('preview')), $model->url('full'), [
 		'class'=>'file-preview-image',
 		'style'=>'width:auto;height:160px;'
 		]); ?>

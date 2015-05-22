@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/jquery.fancybox.css">
+	<script type="text/javascript" src="assets/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="assets/jquery.fancybox.pack.js"></script>
+</head>
+<body>
+    <div class="leftpart">
+		<h3>Все каталоги</h3>
+	</div>
+	<div class="content">
+		<h3>Крутая форма</h3>
+		    <input type="button" value="Select image" class="picsel" />
+	</div>
+	<div id="test" onClick="alert(123)"></div>
+</body>
+<script>
+$(function(){
+
+      callback = function(id) {
+      	$.fancybox.close();
+        alert("This is ID of selected image: "+id);
+      };
+
+    $('.picsel').click(function(){
+        $.fancybox.open([{href : '/image/selector.html', type: 'iframe', title : 'Title', width: '900px', height: '700px', autoDimensions: false, 'autoSize':false}]);
+    });
+});
+</script>
+</html>

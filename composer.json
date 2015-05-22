@@ -14,11 +14,15 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "kartik-v/yii2-widget-fileinput": "*"
+        "kartik-v/yii2-widget-fileinput": "*",
+        "newerton/yii2-fancybox": "*"
     },
     "autoload": {
         "psr-4": {
             "simplator\\medialib\\": ""
         }
+    },
+    "extra": {
+        "bootstrap": "simplator\\medialib\\Bootstrap"
     }
 }
