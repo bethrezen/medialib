@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model cnxfaeton\medialib\models\Picture */
+/* @var $model simplator\medialib\models\Picture */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Picture',

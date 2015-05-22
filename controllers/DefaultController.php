@@ -1,6 +1,6 @@
 <?php
 
-namespace cnxfaeton\medialib\controllers;
+namespace simplator\medialib\controllers;
 
 use yii\web\Controller;
 

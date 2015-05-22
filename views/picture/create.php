@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model cnxfaeton\medialib\models\Picture */
+/* @var $model simplator\medialib\models\Picture */
 
 $this->title = Yii::t('app', 'Create {modelClass}', [
     'modelClass' => 'Picture',

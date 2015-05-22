@@ -1,10 +1,10 @@
 <?php
 
-namespace cnxfaeton\medialib;
+namespace simplator\medialib;
 
 class medialib extends \yii\base\Module
 {
-    public $controllerNamespace = 'cnxfaeton\medialib\controllers';
+    public $controllerNamespace = 'simplator\medialib\controllers';
 
     public function init()
     {

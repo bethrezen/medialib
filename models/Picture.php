@@ -1,6 +1,6 @@
 <?php
 
-namespace cnxfaeton\medialib\models;
+namespace simplator\medialib\models;
 
 use Yii;
 

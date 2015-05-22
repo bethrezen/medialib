@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model cnxfaeton\medialib\models\Config */
+/* @var $model simplator\medialib\models\Config */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Config',

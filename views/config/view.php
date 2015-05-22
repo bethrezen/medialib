@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model cnxfaeton\medialib\models\Config */
+/* @var $model simplator\medialib\models\Config */
 
 $this->title = $model->model;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Configs'), 'url' => ['index']];

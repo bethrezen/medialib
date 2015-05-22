@@ -1,11 +1,11 @@
 <?php
 
-namespace cnxfaeton\medialib\controllers;
+namespace simplator\medialib\controllers;
 
 use Yii;
-use cnxfaeton\medialib\models\Picture;
-use cnxfaeton\medialib\models\Config;
-use cnxfaeton\medialib\models\Options;
+use simplator\medialib\models\Picture;
+use simplator\medialib\models\Config;
+use simplator\medialib\models\Options;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

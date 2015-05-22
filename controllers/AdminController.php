@@ -1,6 +1,6 @@
 <?php
 
-namespace cnxfaeton\medialib\controllers;
+namespace simplator\medialib\controllers;
 
 class AdminController extends \yii\web\Controller
 {

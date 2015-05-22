@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model cnxfaeton\medialib\models\Picture */
+/* @var $model simplator\medialib\models\Picture */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'MediaLib'), 'url' => ['/medialib']];

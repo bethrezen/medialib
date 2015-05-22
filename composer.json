@@ -14,6 +14,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "kartik-v/yii2-widget-fileinput": "*"
     },
     "autoload": {
         "psr-4": {

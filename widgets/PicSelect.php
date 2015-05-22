@@ -6,9 +6,9 @@
  * and open the template in the editor.
  */
 
-namespace cnxfaeton\medialib\widgets;
+namespace simplator\medialib\widgets;
 
-use cnxfaeton\medialib\models\Picture;
+use simplator\medialib\models\Picture;
 
 /**
  * Description of PicSelect
