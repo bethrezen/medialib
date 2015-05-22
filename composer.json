@@ -18,7 +18,8 @@
     },
     "autoload": {
         "psr-4": {
-            "simplator\\medialib\\": ""
+            "simplator\\medialib\\": "*",
+            "newerton/yii2-fancybox": "*"
         }
     }
 }
