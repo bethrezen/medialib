@@ -15,12 +15,11 @@
     "minimum-stability": "dev",
     "require": {
         "kartik-v/yii2-widget-fileinput": "*",
-        "newerton/yii2-fancybox": "*"
+        "newerton/yii2-fancybox": "dev-master"
     },
     "autoload": {
         "psr-4": {
-            "simplator\\medialib\\": "*",
-            "newerton/yii2-fancybox": "*"
+            "simplator\\medialib\\": "*"
         }
     },
     "extra": {
