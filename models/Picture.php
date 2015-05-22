@@ -86,8 +86,6 @@ class Picture extends \yii\db\ActiveRecord
 		
 		if (!$info) return false;
 		
-		
-		
 		$fn=md5_file($this->file->tempName);
 		
 		$this->folder=substr($fn, 0, 6);
@@ -139,7 +137,7 @@ class Picture extends \yii\db\ActiveRecord
         ];
     }
 	
-	public function url($size='preview')
+	public function directlink($size='preview')
 	{
 		$fn=Yii::getAlias(self::$_config['webdir']);
 		if ('full'==$size)
@@ -155,6 +153,14 @@ class Picture extends \yii\db\ActiveRecord
 		$f=self::$_config['size'][$size]['f'];
 		
 		return $fn.'/'.$this->folder.'/'.$this->name.$postfix.'.'.$f;
+	}
+	
+	public function url($size='preview')
+	{
+		if ($size=='full')
+			return \yii\helpers\Url::to(['/medialib/picture/img', 'id'=>$this->id]);
+		else
+			return \yii\helpers\Url::to(['/medialib/picture/img', 'id'=>$this->id, 'size'=>$size]);
 	}
 	
 	public function realpath($size='preview')

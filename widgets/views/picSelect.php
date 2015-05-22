@@ -14,10 +14,12 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var yii\widgets\ActiveForm $form
- * @var dektrium\user\models\LoginForm $model
- * @var string $action
+ * @var simplator\medialib\models\Picture $picture
  */
 ?>
 
-<div style="background: grey">PicSelect</div>
+<div style="background: grey">
+PicSelect
+<?php echo Html::buttonInput(Yii::t('medialib', 'Select picture'), ['id'=>$id.'-select']) ?><br />
+
+</div>

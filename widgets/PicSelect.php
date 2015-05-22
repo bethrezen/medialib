@@ -19,20 +19,24 @@ class PicSelect extends \yii\jui\InputWidget
 {
     /**
      * @inheritdoc
+	 * 
+	 * FIXME hide input
      */
     public function run()
     {
+		$id=$this->options['id'];
+		
         if ($this->hasModel()) {
-            echo Html::activeTextarea($this->model, $this->attribute, $this->options);
+            echo \yii\helpers\Html::activeTextInput($this->model, $this->attribute, $this->options);
         } else {
-            echo Html::textarea($this->name, $this->value, $this->options);
+            echo \yii\helpers\Html::textInput($this->name, $this->value, $this->options);
         }
 
 		$js = [];
 
         $view = $this->getView();
 
-        CKEditorWidgetAsset::register($view);
+/*        CKEditorWidgetAsset::register($view);
 
         $id = $this->options['id'];
 
@@ -40,13 +44,30 @@ class PicSelect extends \yii\jui\InputWidget
             ? Json::encode($this->clientOptions)
             : '{}';
 
-        $js[] = "CKEDITOR.replace('$id', $options);";
-        $js[] = "dosamigos.ckEditorWidget.registerOnChangeHandler('$id');";
+        $js[] = "CKEDITOR.replace('$id', $options);";*/
+		
+$js[]= <<< JS
+	//alert('$id');
+	var callback = function(id) {
+      	$.fancybox.close();
+        alert("This is ID of selected image: "+id);
+	};
 
+    $('#$id-select').click(function(){
+        $.fancybox.open([{href : '/image/selector.html', type: 'iframe', title : 'Title', width: '900px', height: '700px', autoDimensions: false, 'autoSize':false}]);
+    });
+JS;
+
+		
         if (isset($this->clientOptions['filebrowserUploadUrl'])) {
             $js[] = "dosamigos.ckEditorWidget.registerCsrfImageUploadHandler();";
         }
 
         $view->registerJs(implode("\n", $js));
+		
+        return $this->render('picSelect', [
+			'id'	=>$id
+        ]);
+		
     }
 }

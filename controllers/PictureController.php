@@ -75,6 +75,19 @@ class PictureController extends Controller
     }
 
     /**
+     * Displays a single Picture model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionImg($id, $size='full')
+    {
+        $model=$this->findModel($id);
+		if (!$model)
+			$model=$this->findModel(0);
+		$this->redirect($model->directlink($size), 301);
+    }
+
+    /**
      * Creates a new Picture model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
