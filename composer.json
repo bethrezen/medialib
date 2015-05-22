@@ -1,0 +1,23 @@
+{
+    "name": "simplator/medialib",
+    "description": "Media library for manage any media files.",
+    "keywords": ["yii2", "module", "simplator", "media library"],
+    "homepage": "https://github.com/simplator/medialib",
+    "type": "yii2-extension",
+    "license": "GPL-2",
+    "authors": [
+        {
+            "name": "faeton",
+            "email": "i@cnx-faeton.ru",
+            "homepage": "http://simplator.cnx-faeton.ru/"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "simplator\\medialib\\": ""
+        }
+    }
+}
