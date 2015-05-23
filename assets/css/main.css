@@ -1,0 +1,30 @@
+#medialib-folder 
+{
+}
+#medialib-folder .folders
+{
+    margin-right: -160px;
+    width: 150px;
+    float: left;
+    display: inline-block;
+    border: solid 1px red;
+}
+#medialib-folder .content
+{
+    margin-left: 170px;
+    margin-right: 170px;
+    width: 440px;
+    height: 100%;
+    display: inline-block;
+    border: solid 1px black;
+}
+#medialib-folder .info
+{
+    float: right;
+    margin-left: -160px;
+    margin-right: 10px;
+    width: 150px;
+    height: 100%;
+    display: inline-block;
+    border: solid 1px green;
+}

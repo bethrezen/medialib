@@ -179,7 +179,8 @@ $(document).on('click', '.subcat', function(){
 
 $(document).on('click', '.image', function(){
   var id = $(this).attr("rel");
-  parent.callback(id);
+  $("body").trigger("callback", [id]);
+  //callback(id);
 });
 
 function load_cat(id)

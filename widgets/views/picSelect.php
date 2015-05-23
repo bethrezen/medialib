@@ -18,8 +18,8 @@ use yii\helpers\Html;
  */
 ?>
 
-<div style="background: grey">
+<div style="background: grey" id="<?php echo $id.'-select' ?>">
 PicSelect
-<?php echo Html::buttonInput(Yii::t('medialib', 'Select picture'), ['id'=>$id.'-select']) ?><br />
-
+<?php echo Html::buttonInput(Yii::t('medialib', 'Select picture')) ?><br />
+<?php echo $input ?>
 </div>

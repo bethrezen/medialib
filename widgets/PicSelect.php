@@ -9,6 +9,7 @@
 namespace simplator\medialib\widgets;
 
 use simplator\medialib\models\Picture;
+use simplator\medialib\ModuleAsset;
 
 /**
  * Description of PicSelect
@@ -26,12 +27,6 @@ class PicSelect extends \yii\jui\InputWidget
     {
 		$id=$this->options['id'];
 		
-        if ($this->hasModel()) {
-            echo \yii\helpers\Html::activeTextInput($this->model, $this->attribute, $this->options);
-        } else {
-            echo \yii\helpers\Html::textInput($this->name, $this->value, $this->options);
-        }
-
 		$js = [];
 
         $view = $this->getView();
@@ -46,28 +41,33 @@ class PicSelect extends \yii\jui\InputWidget
 
         $js[] = "CKEDITOR.replace('$id', $options);";*/
 		
+		$folderurl=  \yii\helpers\Url::to(['/medialib/json/index']);
 $js[]= <<< JS
-	//alert('$id');
-	var callback = function(id) {
-      	$.fancybox.close();
-        alert("This is ID of selected image: "+id);
-	};
-
-    $('#$id-select').click(function(){
-        $.fancybox.open([{href : '/image/selector.html', type: 'iframe', title : 'Title', width: '900px', height: '700px', autoDimensions: false, 'autoSize':false}]);
-    });
+	jQuery('#$id-select').fileselect({
+		title:		"Выбор изображения",
+		callback:	function(id){alert(id)}
+	});
 JS;
 
 		
-        if (isset($this->clientOptions['filebrowserUploadUrl'])) {
-            $js[] = "dosamigos.ckEditorWidget.registerCsrfImageUploadHandler();";
-        }
-
+        $this->registerClientScript();
         $view->registerJs(implode("\n", $js));
 		
         return $this->render('picSelect', [
-			'id'	=>$id
+			'id'	=> $id,
+			'input'	=> $this->hasModel()?\yii\helpers\Html::activeTextInput($this->model, $this->attribute, $this->options):\yii\helpers\Html::textInput($this->name, $this->value, $this->options)
         ]);
 		
     }
+	
+    /**
+     * Registers required script for the plugin to work as DatePicker
+     */
+    public function registerClientScript() {
+        $view = $this->getView();
+
+        $assets=ModuleAsset::register($view);
+		$assets->js[]='js/jquery.fileselect.js';
+    }
+	
 }

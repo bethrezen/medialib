@@ -14,7 +14,17 @@ namespace simplator\medialib;
  *
  * @since 0.1
  */
-class ModuleAssets extends \simplator\base\BaseAssetBundle
+class ModuleAsset extends \simplator\base\BaseAssetBundle
 {
-	public $sourcePath='@vendor/simplator/simpleblog/assets/';
+	public $depends = [
+        'yii\web\JqueryAsset',
+		'newerton\fancybox\FancyBoxAsset'
+    ];
+    
+	public $js = [];
+	public $css = [
+		'css/main.css'
+	];
+    
+	public $sourcePath='@vendor/simplator/medialib/assets/';
 }

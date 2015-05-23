@@ -23,6 +23,7 @@ class Module extends \yii\base\Module
     public $urlRules = [
         'pic<id:\d+>/<size:\w+>'	=> 'picture/img',
         'pic<id:\d+>'				=> 'picture/img',
+		'folder'					=> 'json/index',
         'picture/<id:\d+>'			=> 'picture/view',
     ];
 }
