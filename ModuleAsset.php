@@ -18,7 +18,8 @@ class ModuleAsset extends \simplator\base\BaseAssetBundle
 {
 	public $depends = [
         'yii\web\JqueryAsset',
-		'newerton\fancybox\FancyBoxAsset'
+		'newerton\fancybox\FancyBoxAsset',
+		'dosamigos\fileupload\FileUploadAsset'
     ];
     
 	public $js = [];

@@ -7,14 +7,29 @@
 	<div class="imglist"></div>
 
 
-<div style="clear:both"></div>
 <div class="form">
-	<form>
-		<p>Загрузить по url: <input name="customUrl" class="customUrl" type="text" /></p>
-		<p>Загрузить с компьютера: <input class="ufile" name="file" type="file" /></p>
-		<input type="hidden" name="catid" class="catid" />
-		<p><div class="sendfile">Отправить</div></p>
-	</form>
+	
+<?= \dosamigos\fileupload\FileUpload::widget([
+    'model' => $model,
+    'attribute' => 'file',
+    'url' => ['/medialib/picture/upload'], // your url, this is just for demo purposes,
+    'options' => ['accept' => 'image/*'],
+    'clientOptions' => [
+        'maxFileSize' => 2000000
+    ],
+    // Also, you can specify jQuery-File-Upload events
+    // see: https://github.com/blueimp/jQuery-File-Upload/wiki/Options#processing-callback-options
+    'clientEvents' => [
+        'fileuploaddone' => 'function(e, data) {
+                                console.log(e);
+                                console.log(data);
+                            }',
+        'fileuploadfail' => 'function(e, data) {
+                                console.log(e);
+                                console.log(data);
+                            }',
+    ],
+]);?>
 </div>
 
 </div>

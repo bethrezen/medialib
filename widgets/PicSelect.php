@@ -18,6 +18,9 @@ use simplator\medialib\ModuleAsset;
  */
 class PicSelect extends \yii\jui\InputWidget
 {
+	public $folderurl=['/medialib/json/index'];
+	public $uploadurl=['/medialib/picture/upload'];
+	
     /**
      * @inheritdoc
 	 * 
@@ -25,6 +28,11 @@ class PicSelect extends \yii\jui\InputWidget
      */
     public function run()
     {
+		$folderurl=  \yii\helpers\Url::to($this->folderurl);
+//		$this->options['data-url'] = \yii\helpers\Url::to($this->uploadurl);
+
+		$picture=new Picture;
+		
 		$id=$this->options['id'];
 		
 		$js = [];
@@ -41,12 +49,13 @@ class PicSelect extends \yii\jui\InputWidget
 
         $js[] = "CKEDITOR.replace('$id', $options);";*/
 		
-		$folderurl=  \yii\helpers\Url::to(['/medialib/json/index']);
+			
 $js[]= <<< JS
 	jQuery('#$id-select').fileselect({
 		title:		"Выбор изображения",
 		callback:	function(id){alert(id)}
 	});
+	
 JS;
 
 		
@@ -54,8 +63,8 @@ JS;
         $view->registerJs(implode("\n", $js));
 		
         return $this->render('picSelect', [
-			'id'	=> $id,
-			'input'	=> $this->hasModel()?\yii\helpers\Html::activeTextInput($this->model, $this->attribute, $this->options):\yii\helpers\Html::textInput($this->name, $this->value, $this->options)
+			'widget'	=> $this,
+			'picture'	=> $picture
         ]);
 		
     }

@@ -16,7 +16,7 @@
     "require": {
         "kartik-v/yii2-widget-fileinput": "*",
         "newerton/yii2-fancybox": "dev-master",
-        "bower-asset/blueimp-file-upload": "~9.9.0"
+        "2amigos/yii2-file-upload-widget": "dev-master"
     },
     "autoload": {
         "psr-4": {

@@ -1,51 +1,33 @@
 (function($){
 	var config={};
-	var innerInit=function(options)
-	{
-		config=options;
-		jQuery(window).resize(function(){
-			//alert('1');
-			jQuery('#medialib-folder > div').height(jQuery('#medialib-folder').parent().height()-5);
-		});
-	};
-	
-	var initFrame=function(options){
-		if (options===undefined) options={};
-		if (options.title===undefined) options.title="Picture select";
-		
-		if (jQuery('#medialib-folder').length===0)
-		{
-			jQuery('body').append('<div id="medialib-folder">8456+46</div>');
-			$.ajax({
-				url: "/medialib/folder",
-				data: "",
-				success: function(msg){
-					jQuery('#medialib-folder').html(msg);
-					innerInit(options);
-					open();
-				}
-			});
-		}
-	};
-	var open=function(){
-		jQuery.fancybox.open('#medialib-folder', {
-			title: config.title, 
-			width: '800px', 
-			height: '700px', 
-			autoDimensions: false, 
-			autoSize:false
-		});
-	};
 
 	var methods={
 		init: function (options) {
 			//alert('init');
-			initFrame(options);
+//			initFrame(options);
 			return this.each(function(){
-				/*$(this).on('click', (function(){
-					//alert('select');
-					//open();
-				}));*/
+				$(this).find('.fileupload').fileupload({
+					dataType: 'json',
+					dropZone: '#'+$(this).attr('id'),
+					done: function (e, data) {
+						console.log(data);
+						/*$.each(data.result.files, function (index, file) {
+							$('<p/>').text(file.name).appendTo(document.body);
+						});*/
+					},
+					add: function (e, data) {
+						data.context = $('<p/>').text('Uploading...').appendTo(document.body);
+						data.submit();
+					},
+					progressall: function (e, data) {
+						var progress = parseInt(data.loaded / data.total * 100, 10);
+						console.log(progress);
+						$(this).find('.bar').css(
+							'width',
+							progress + '%'
+						);
+					}
+				});
 			});
 		},
 		select: function (options) {

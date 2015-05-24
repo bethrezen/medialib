@@ -18,8 +18,17 @@ use yii\helpers\Html;
  */
 ?>
 
-<div style="background: grey" id="<?php echo $id.'-select' ?>">
-PicSelect
-<?php echo Html::buttonInput(Yii::t('medialib', 'Select picture')) ?><br />
-<?php echo $input ?>
+<div style="background: grey" id="<?php echo $widget->options['id'].'-select' ?>">
+	<span class="log">PicSelect</span>
+<?php //echo Html::buttonInput(Yii::t('medialib', 'Select picture')) ?><br />
+
+<?php echo \yii\helpers\Html::activeTextInput($widget->model, $widget->attribute, $widget->options); ?>
+<?php echo Html::fileInput('Picture[file]', null, [
+	'class'=>'fileupload',
+	'data-url'=>\yii\helpers\Url::to($widget->uploadurl),
+	'multiple'=>true]) ?><br />
+
+<div class="progress">
+    <div class="bar" style="width: 0%;height: 18px;background: green;"></div>
+</div>
 </div>
