@@ -28,3 +28,31 @@
     display: inline-block;
     border: solid 1px green;
 }
+.medialib-widget-select
+{
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 140px;
+    min-width: 140px;
+}
+.medialib-widget-select input
+{
+    display: none;
+}
+.medialib-widget-select .progr
+{
+    width: 100%;
+    height: 18px;
+}
+.medialib-widget-select .progr .bar
+{
+    height: 18px;
+    background: green;
+}
+
+
+
+
+
+
+

@@ -16,19 +16,18 @@ use yii\helpers\Html;
  * @var yii\web\View $this
  * @var simplator\medialib\models\Picture $picture
  */
+$asset=\simplator\medialib\ModuleAsset::register($this);
+$baseurl=$asset->baseUrl;
 ?>
 
-<div style="background: grey" id="<?php echo $widget->options['id'].'-select' ?>">
-	<span class="log">PicSelect</span>
-<?php //echo Html::buttonInput(Yii::t('medialib', 'Select picture')) ?><br />
-
+<div class="medialib-widget-select" style="background-image: url(<?=$baseurl ?>/file-add.png)" data-add="<?=$baseurl ?>/file-add.png" data-uploading="<?=$baseurl ?>/file-uploading.gif" id="<?php echo $widget->options['id'].'-select' ?>">
 <?php echo \yii\helpers\Html::activeTextInput($widget->model, $widget->attribute, $widget->options); ?>
 <?php echo Html::fileInput('Picture[file]', null, [
 	'class'=>'fileupload',
 	'data-url'=>\yii\helpers\Url::to($widget->uploadurl),
 	'multiple'=>true]) ?><br />
 
-<div class="progress">
-    <div class="bar" style="width: 0%;height: 18px;background: green;"></div>
+<div class="progr">
+    <div class="bar" style="width: 0%;"></div>
 </div>
 </div>

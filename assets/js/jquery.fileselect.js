@@ -11,9 +11,12 @@
 					dataType: 'json',
 					dropZone: '#'+item.attr('id'),
 					done: function (e, data) {
+						item.css('background-image', 'url('+item.attr('data-add')+')');
+						item.find('.bar').css('width','0%');
 						if (data.result.success)
 						{
 							item.find('input[type=text]').val(data.result.id);
+							item.css('background-image', 'url('+data.result.preview+')');
 						}
 						else
 						{
@@ -25,12 +28,18 @@
 							$('<p/>').text(file.name).appendTo(document.body);
 						});*/
 					},
+					send: function(e, data) {
+						item.css('background-image', 'url('+item.attr('data-uploading')+')');
+					},
+					fail: function(e, data) {
+						item.css('background-image', 'url('+item.attr('data-add')+')');
+					},
 					formData: {
 						'Picture[catid]': 0
 					},
 					progressall: function (e, data) {
 						var progress = parseInt(data.loaded / data.total * 100, 10);
-						console.log(progress);
+						if (progress===100) progress=0;
 						item.find('.bar').css('width',progress + '%');
 					}
 				});

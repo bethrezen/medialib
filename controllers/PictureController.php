@@ -130,7 +130,7 @@ class PictureController extends Controller
 			
 			if ($model->save())
 			{
-				echo json_encode(['success'=>true, 'id'=>$model->id]);
+				echo json_encode(['success'=>true, 'id'=>$model->id, 'preview'=>$model->directlink('preview')]);
 				return;
 			}
 			$err='';
