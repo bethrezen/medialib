@@ -77,7 +77,7 @@ class Picture extends \yii\db\ActiveRecord
 	 * TODO если объект существует - то удалть старые изображения
 	 * @return boolean
 	 */
-	public function checkFile()
+	public function upload()
 	{
 		if (!$this->file)
 			return false;
@@ -86,25 +86,30 @@ class Picture extends \yii\db\ActiveRecord
 		
 		if (!$info) return false;
 		
-		$fn=md5_file($this->file->tempName);
-		
-		$this->folder=substr($fn, 0, 6);
-		$this->name=substr($fn, 6);
 		$this->filetype=substr($info['mime'], 6);
 		$this->sizex=$info[0];
 		$this->sizey=$info[1];
 		$this->createtime=time();
 		$this->updatetime=time();
-		/*
 		
-		$this->filetype="jpg";
-		$this->sizex=100;
-		$this->sizey=100;*/
-		return true;
-	}
+		/// TODO: check for dublicates
+		$exist=TRUE;
+		while($exist)
+		{
+			$fn=md5(microtime(true));
+			$this->folder=substr($fn, 0, 6);
+			$this->name=substr($fn, 6);
+			$exist=self::find()->where([
+				'folder'=>$this->folder,
+				'name'=>$this->name
+			])->one();
+		}
+		
+		if (!$this->save())
+		{
+			return false;
+		}
 	
-	public function saveUpload()
-	{
 		$fn=Yii::getAlias(self::$_config['directory']); @mkdir($fn);
 		$fn.='/'.$this->folder; @mkdir($fn);
 		$fn.='/'.$this->name.'.'.$this->filetype; 

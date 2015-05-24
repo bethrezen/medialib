@@ -126,19 +126,8 @@ class PictureController extends Controller
 			$model->file = UploadedFile::getInstance($model, 'file');
 			if (!$model->file) echo json_encode(['success'=>false, 'error'=>'no file']);
 			else
-				if (!$model->checkFile()) echo json_encode(['success'=>false, 'error'=>'file a no valid image']);
+				if (!$model->upload()) echo json_encode(['success'=>false, 'error'=>'file a no valid image']);
 			
-			$exist=Picture::find()->where([
-				'folder'=>$model->folder,
-				'name'=>$model->name
-			])->one();
-			
-			if ($exist)
-			{
-				echo json_encode(['success'=>true, 'id'=>$exist->id]);
-				return;
-			}
-			$model->saveUpload();
 			if ($model->save())
 			{
 				echo json_encode(['success'=>true, 'id'=>$model->id]);
