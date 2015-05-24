@@ -6,26 +6,32 @@
 			//alert('init');
 //			initFrame(options);
 			return this.each(function(){
-				$(this).find('.fileupload').fileupload({
+				var item=$(this);
+				item.find('.fileupload').fileupload({
 					dataType: 'json',
-					dropZone: '#'+$(this).attr('id'),
+					dropZone: '#'+item.attr('id'),
 					done: function (e, data) {
-						console.log(data);
+						if (data.result.success)
+						{
+							item.find('input[type=text]').val(data.result.id);
+						}
+						else
+						{
+							console.log(data);
+							alert(data.result.error);
+						}
+						//alert()
 						/*$.each(data.result.files, function (index, file) {
 							$('<p/>').text(file.name).appendTo(document.body);
 						});*/
 					},
-					add: function (e, data) {
-						data.context = $('<p/>').text('Uploading...').appendTo(document.body);
-						data.submit();
+					formData: {
+						'Picture[catid]': 0
 					},
 					progressall: function (e, data) {
 						var progress = parseInt(data.loaded / data.total * 100, 10);
 						console.log(progress);
-						$(this).find('.bar').css(
-							'width',
-							progress + '%'
-						);
+						item.find('.bar').css('width',progress + '%');
 					}
 				});
 			});

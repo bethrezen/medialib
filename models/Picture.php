@@ -77,7 +77,7 @@ class Picture extends \yii\db\ActiveRecord
 	 * TODO если объект существует - то удалть старые изображения
 	 * @return boolean
 	 */
-	public function upload()
+	public function checkFile()
 	{
 		if (!$this->file)
 			return false;
@@ -100,12 +100,11 @@ class Picture extends \yii\db\ActiveRecord
 		$this->filetype="jpg";
 		$this->sizex=100;
 		$this->sizey=100;*/
-		
-		if (!$this->save())
-		{
-			return false;
-		}
-		
+		return true;
+	}
+	
+	public function saveUpload()
+	{
 		$fn=Yii::getAlias(self::$_config['directory']); @mkdir($fn);
 		$fn.='/'.$this->folder; @mkdir($fn);
 		$fn.='/'.$this->name.'.'.$this->filetype; 
