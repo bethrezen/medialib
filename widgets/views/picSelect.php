@@ -18,9 +18,12 @@ use yii\helpers\Html;
  */
 $asset=\simplator\medialib\ModuleAsset::register($this);
 $baseurl=$asset->baseUrl;
+$img=$baseurl.'/file-add.png';
+if (!$picture->getIsNewRecord())
+	$img=$picture->directlink('preview');
 ?>
 
-<div class="medialib-widget-select" style="background-image: url(<?=$baseurl ?>/file-add.png)" data-add="<?=$baseurl ?>/file-add.png" data-uploading="<?=$baseurl ?>/file-uploading.gif" id="<?php echo $widget->options['id'].'-select' ?>">
+<div class="medialib-widget-select" style="background-image: url(<?=$img ?>)" data-add="<?=$baseurl ?>/file-add.png" data-uploading="<?=$baseurl ?>/file-uploading.gif" id="<?php echo $widget->options['id'].'-select' ?>">
 <?php echo \yii\helpers\Html::activeTextInput($widget->model, $widget->attribute, $widget->options); ?>
 <?php echo Html::fileInput('Picture[file]', null, [
 	'class'=>'fileupload',

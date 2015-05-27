@@ -31,7 +31,12 @@ class PicSelect extends \yii\jui\InputWidget
 		$folderurl=  \yii\helpers\Url::to($this->folderurl);
 //		$this->options['data-url'] = \yii\helpers\Url::to($this->uploadurl);
 
-		$picture=new Picture;
+		$picid=$this->model->{$this->attribute};
+		$picture=null;
+		if ($picid)
+			$picture=Picture::find()->where(['id'=>$picid])->one();
+		if (!$picture)
+			$picture=new Picture;
 		
 		$id=$this->options['id'];
 		

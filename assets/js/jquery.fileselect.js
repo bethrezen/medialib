@@ -7,6 +7,7 @@
 //			initFrame(options);
 			return this.each(function(){
 				var item=$(this);
+				
 				item.find('.fileupload').fileupload({
 					dataType: 'json',
 					dropZone: '#'+item.attr('id'),
@@ -39,7 +40,7 @@
 					},
 					progressall: function (e, data) {
 						var progress = parseInt(data.loaded / data.total * 100, 10);
-						if (progress===100) progress=0;
+						//if (progress===100) progress=0;
 						item.find('.bar').css('width',progress + '%');
 					}
 				});
