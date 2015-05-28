@@ -41,7 +41,8 @@ composer require "simplator/medialib:dev-master"
 
 ### 3. Добавляем виджет на форму редактирования
 ```php
-    <?php echo $form->field($model, 'pictureid')->widget(simplator\medialib\widgets\PicSelect::className()) ?>
+    <?php echo $form->field($model, 'pictureid')
+                ->widget(simplator\medialib\widgets\PicSelect::className()) ?>
 ```
 
 Виджет предоставляет интерфейс для выбора изображения и его предпросмотра.
