@@ -39,7 +39,7 @@ composer require "simplator/medialib:dev-master"
 ```
 Данном коде если изображения с таким id нет или id пустое то возвращяет изображение по умолчанию
 
-### 3. Добавляем виджет на форму ретактирования
+### 3. Добавляем виджет на форму редактирования
 ```php
     <?php echo $form->field($model, 'pictureid')->widget(simplator\medialib\widgets\PicSelect::className()) ?>
 ```
