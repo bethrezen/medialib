@@ -47,6 +47,6 @@ composer require "simplator/medialib:dev-master"
 
 Виджет предоставляет интерфейс для выбора изображения и его предпросмотра.
 
-Поддерживает drug&drop
+Поддерживает drug&drop.
 
 Использует jQuery-file-upload.

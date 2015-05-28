@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	// [plugin documentation and demos](http://plugins.krajee.com/file-input/demo) for more details 
 	// and options on using AJAX uploads.
 	echo \kartik\file\FileInput::widget([
-		'name' => 'Picture[file--]',
+		'name' => 'Picture[file]',
 		'options'=>[
 			'multiple'=>true
 		],
@@ -39,39 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'maxFileCount' => 100
 		]
 	]);
-$script = <<< JS
-jQuery(function(){
-	jQuery('#snd').click(function(){
-		var file=$('#file');
-		console.log($('#file').prop("files")[0]);
-
-var file_data = $('#file').prop('files')[0];   
-var form_data = new FormData();                  
-form_data.append('Picture[file]', '');
-form_data.append('Picture[file]', file_data);
-alert(form_data);  
-$.ajax({
-//			url: '/image/1.php', // point to server-side PHP script 
-			url: '/medialib/picture/upload', // point to server-side PHP script 
-			dataType: 'text',  // what to expect back from the PHP script, if anything
-			cache: false,
-			contentType: false,//'multipart/form-data',
-			processData: false,
-			data: form_data,                         
-			type: 'POST',
-			success: function(php_script_response){
-				alert(php_script_response); // display response from the PHP script, if any
-			}
- });
-	});
-});
-JS;
-$this->registerJs($script);
 ?>
-<input type="file" name="file" id="file" />
-<input type="button" id="snd" />
-	
-	
 	<div class="mlpicture">
 		<?php echo ListView::widget([
 			'dataProvider'=>$dataProvider,

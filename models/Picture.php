@@ -54,9 +54,13 @@ class Picture extends \yii\db\ActiveRecord
 	 * @param array|id|null $default
 	 * @return \simplator\medialib\models\Picture
 	 */
-	public static function getPicture($id, $default=0)
+	public static function getPicture($id, $default='id')
 	{
 		$pic=Picture::find()->where(['id'=>$id])->one();
+		if (!$pic)
+			$pic=Picture::find()->where(['id'=>\Yii::$app->settings->get('default.'.$default, 'medialib')])->one();
+		if (!$pic)
+			$pic=Picture::find()->where(['id'=>\Yii::$app->settings->get('default.id', 'medialib')])->one();
 		if (!$pic)
 			$pic=new Picture();
 		return $pic;
