@@ -21,8 +21,8 @@ class Module extends \yii\base\Module
 
     /** @var array The rules to be used in URL management. */
     public $urlRules = [
-        'pic<id:\d+>/<size:\w+>'	=> 'picture/img',
-        'pic<id:\d+>'				=> 'picture/img',
+        'pic<id:\d+>/<size:\w+>'	=> 'file/picture',
+        'pic<id:\d+>'				=> 'file/picture',
 		'folder'					=> 'json/index',
         'picture/<id:\d+>'			=> 'picture/view',
     ];
