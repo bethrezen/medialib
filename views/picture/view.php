@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use simplator\medialib\models\File;
 
 /* @var $this yii\web\View */
 /* @var $model simplator\medialib\models\Picture */
@@ -16,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
 	<p>
-		<?php echo Html::a($model->img('preview'), $model->url('full'), ['class'=>'box']); ?>
+		<?php echo Html::a(Html::img(File::picture($model->id, 'preview')), File::picture($model->id, 'full'), ['class'=>'box']); ?>
 	</p>
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
