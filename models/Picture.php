@@ -36,8 +36,8 @@ class Picture extends \yii\db\ActiveRecord
 				'f'=>'png'
 			],
 			'micro'=>[
-				'w'=>25,
-				'h'=>25,
+				'w'=>32,
+				'h'=>32,
 				'm'=>'out',
 				'f'=>'png'
 			]
@@ -266,11 +266,29 @@ $ss=array();
 			$dst_w=$size['w'];
 			$dst_h=$size['h'];
 
-			if ($info['w']<$size['w'] && $info['h']<$size['h']) $size['m']='crop';
+			if ($info['w']<$size['w'] && $info['h']<$size['h']) $size['m']='center';
 			if (!isset($size['m']))
 				$size['m']='in';
+			
+			$hc=$src_h/$dst_h;
+			$wc=$src_w/$dst_w;
+			
 			switch ($size['m'])
 			{
+				case 'in':
+					$k=max($hc, $wc);
+					$dst_h=floor($info['h']/$k);
+					$dst_w=floor($info['w']/$k);
+					$dst_y=floor(($size['h']-$dst_h)/2);
+					$dst_x=floor(($size['w']-$dst_w)/2);
+					break;
+				case 'out':
+					$k=min($hc, $wc);
+					$dst_h=floor($info['h']/$k);
+					$dst_w=floor($info['w']/$k);
+					$dst_y=floor(($size['h']-$dst_h)/2);
+					$dst_x=floor(($size['w']-$dst_w)/2);
+					break;
 				case 'crop':
 					$src_x=($info['w']-$size['w'])/2;
 					$src_y=($info['h']-$size['h'])/2;
@@ -278,21 +296,34 @@ $ss=array();
 					$src_w=$size['w'];
 					$src_h=$size['h'];
 					break;
-				case 'scale':
+				case 'center':
+					$src_x=0;
+					$src_y=0;
+					$src_w=$info['w'];
+					$src_h=$info['h'];
+					
+					$dst_h=$info['h'];
+					$dst_w=$info['w'];
+					$dst_x=floor($size['w']-$info['w'])/2;
+					$dst_y=floor($size['h']-$info['h'])/2;
+					break;
 				default: // scale
 					break;
 			}
 			
 			$image=  imagecreatetruecolor($size['w'], $size['h']);
-			imagesavealpha($image, true);
+			$transparent = imagecolorallocatealpha($image, 0, 0, 0, 127); 
+			imagefill($image, 0, 0, $transparent); 
+
 			imagealphablending($image, false);
-					
+			imagesavealpha($image, true);
 			
-			imagepalettecopy($image, $input);
+			//imagepalettecopy($image, $input);
 			imageinterlace($image, true);
-			
-			imagecolortransparent($image, imagecolorallocate($image, 0, 0, 0));
-			imagefilledrectangle($image, 0, 0, $size['w'], $size['h'], imagecolorallocatealpha($image, 255,55,55,5));
+
+			//imagecolortransparent($image, $trans);
+			//imagefilledrectangle($image, 0, 0, $size['w'], $size['h'], $trans);
+			//imagefilledrectangle($image, 0, 0, $size['w'], $size['h'], imagecolorallocatealpha($image, 255,55,55,5));
 			imagecopyresampled($image, $input, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
 
 			$fn=$this->realpath($name);
@@ -301,10 +332,10 @@ $ss=array();
 			
 			switch ($size['f'])
 			{
-				case 'gif': 
+				case 'gif':
 					imagegif($image, $fn, 70);
 				break;
-				case 'png': 
+				case 'png':
 					imagepng($image, $fn, 0);
 				break;
 				case 'jpeg':
