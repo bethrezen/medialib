@@ -1,9 +1,9 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @copyright Copyright (c) 2015 Evgeny Lubyanoi
+ * @license https://github.com/simplator/medialib/blob/master/LICENSE.md
+ * @author Evgeny Lubyanoi <i@cnx-faeton.ru>
  */
 
 namespace simplator\medialib\widgets;
@@ -14,7 +14,7 @@ use simplator\medialib\ModuleAsset;
 /**
  * Description of PicSelect
  *
- * @author faeton
+ * @author Evgeni Lubyanoi <i@cnx-faeton.ru>
  */
 class PicSelect extends \yii\jui\InputWidget
 {

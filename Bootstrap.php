@@ -1,12 +1,9 @@
 <?php
 
-/*
- * This file is part of the Dektrium project.
- *
- * (c) Dektrium project <http://github.com/dektrium/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+/**
+ * @copyright Copyright (c) 2015 Evgeny Lubyanoi
+ * @license https://github.com/simplator/medialib/blob/master/LICENSE.md
+ * @author Evgeny Lubyanoi <i@cnx-faeton.ru>
  */
 
 namespace simplator\medialib;
@@ -22,7 +19,7 @@ use yii\console\Application as ConsoleApplication;
  * Bootstrap class registers module and user application component. It also creates some url rules which will be applied
  * when UrlManager.enablePrettyUrl is enabled.
  *
- * @author Dmitry Erofeev <dmeroff@gmail.com>
+ * @author Evgeni Lubyanoi <i@cnx-faeton.ru>
  */
 class Bootstrap implements BootstrapInterface
 {

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @copyright Copyright (c) 2015 Evgeny Lubyanoi
+ * @license https://github.com/simplator/medialib/blob/master/LICENSE.md
+ * @author Evgeny Lubyanoi <i@cnx-faeton.ru>
+ */
+
 namespace simplator\medialib\models;
 
 use Yii;

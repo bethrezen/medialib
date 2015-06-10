@@ -1,10 +1,9 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @package yii2-widgets
- * @subpackage yii2-widget-fileinput
- * @version 1.0.2
+ * @copyright Copyright (c) 2015 Evgeny Lubyanoi
+ * @license https://github.com/simplator/medialib/blob/master/LICENSE.md
+ * @author Evgeny Lubyanoi <i@cnx-faeton.ru>
  */
 
 namespace simplator\medialib;
