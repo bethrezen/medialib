@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright Copyright (c) 2015 GreatKings.ru
+ * @license http://github.com/simplator/medialib/LICENSE.md
+ * @author Evgeny Lubyanoi <author@greatkings.ru>
+ */
 namespace simplator\medialib;
 
 class Module extends \yii\base\Module
