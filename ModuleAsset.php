@@ -3,13 +3,13 @@
 /**
  * @copyright Copyright (c) 2015 Evgeny Lubyanoi
  * @license https://github.com/simplator/medialib/blob/master/LICENSE.md
- * @author Evgeny Lubyanoi <i@cnx-faeton.ru>
+ * @author Evgeny Lubyanoi <arswarog@yandex.ru>
  */
 
 namespace simplator\medialib;
 
 /**
- * Asset bundle for simpleblog
+ * Asset bundle for medialib
  *
  * @since 0.1
  */
