@@ -4,16 +4,16 @@
     "keywords": ["yii2", "module", "simplator", "media library"],
     "homepage": "https://github.com/simplator/medialib",
     "type": "yii2-extension",
-    "license": "GPL-2",
+    "license": "MIT",
     "authors": [
         {
-            "name": "faeton",
-            "email": "i@cnx-faeton.ru",
-            "homepage": "http://simplator.cnx-faeton.ru/"
+            "name": "Evgeny Lubyanoi",
+            "email": "arswarog@yandex.ru"
         }
     ],
     "minimum-stability": "dev",
     "require": {
+        "simplator/settings": "*",
         "kartik-v/yii2-widget-fileinput": "*",
         "newerton/yii2-fancybox": "dev-master",
         "2amigos/yii2-file-upload-widget": "~1.0",
