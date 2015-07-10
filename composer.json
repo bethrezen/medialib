@@ -15,7 +15,7 @@
     "require": {
         "simplator/settings": "*",
         "kartik-v/yii2-widget-fileinput": "*",
-        "newerton/yii2-fancybox": "dev-master",
+        "simplator/yii2-fancybox": "*",
         "2amigos/yii2-file-upload-widget": "~1.0",
         "bower-asset/blueimp-file-upload": "~9.9.0"
     },
